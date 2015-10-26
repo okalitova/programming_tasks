@@ -26,5 +26,7 @@
 *.exe
 *.out
 *.app
-*dinic
-*preflow
+
+# CodeBlocks
+dinic
+preflow
