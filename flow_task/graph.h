@@ -11,43 +11,48 @@ class Edge {
 public:
     int from;
     int to;
-    Edge(int _from, int _to);
     Edge();
+    Edge(int _from, int _to);
+    virtual void read();
 };
 
 class FlowEdge : public Edge {
 public:
     long long cap;
     long long flow;
-    FlowEdge(int _from, int _to, long long _cap);
     FlowEdge();
+    FlowEdge(int _from, int _to, long long _cap = 0);
+    void read();
 };
 
-class BiEdge : public FlowEdge{
+class BiEdge : public FlowEdge {
 public:
     BiEdge* co_bi_edge;
-    BiEdge(int _from, int _to, long long _cap);
-    BiEdge(int _from, int _to);
+    BiEdge(int _from = 0, int _to = 0, long long _cap = 0);
+    void read();
+    void edgeDecrease(long long c);
 };
 
 template <typename TEdge>
 class Graph {
 public:
+    typedef TEdge EdgeType;
     int n;
+    int s;
+    int t;
     std::vector < std::vector < TEdge* > > graph;
-
-    void addEdge(TEdge* t_edge);
     virtual void read() = 0;
+    void addEdge(TEdge* t_edge);
 };
 
 class FlowGraph : public Graph < BiEdge > {
 public:
-    int s, t;
-    std::vector < BiEdge* > real_graph;
-
     void read();
     void print();
     void printRealGraph();
+    static bool isEdge(BiEdge* bi_edge);
+private:
+    std::vector < BiEdge* > real_graph;
 };
 
 #endif // GRAPH_H_INCLUDED

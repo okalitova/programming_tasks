@@ -2,23 +2,18 @@
 #define MAXFLOWDINIC_H_INCLUDED
 
 #include "graph.h"
+#include "maxflow.h"
 
-class MaxFlowDinic {
+class MaxFlowDinic : public MaxFlow {
 public:
-    long long max_flow_value;
-    FlowGraph flow_graph;
-public:
-    MaxFlowDinic(FlowGraph _flow_graph);
+    MaxFlowDinic(FlowGraph _graph);
 };
 
-class MaxFlowDinicScaling {
-public:
-    long long max_flow_value;
-    FlowGraph flow_graph;
+class MaxFlowDinicScaling : public MaxFlow {
 private:
     long long max_edge_value;
 public:
-    MaxFlowDinicScaling(FlowGraph _flow_graph);
+    MaxFlowDinicScaling(FlowGraph _graph);
 private:
     long long findMaxEdgeValue();
 

@@ -1,4 +1,5 @@
 #include "blockflow.h"
+#include "maxflow.h"
 
 BlockFlow::BlockFlow(FlowGraph _graph) : graph(_graph) {
     max_block_flow = 0;
@@ -19,7 +20,7 @@ bool BlockFlow::dfs(int v) {
     int is_t_reached = dfs(bi_edge->to);
     if (!is_t_reached || bi_edge->cap == 0) {
         cur_edge[v]++;
-        dfs(v);
+        return dfs(v);
     } else {
         return true;
     }
@@ -38,13 +39,6 @@ void BlockFlow::pathDecrease(int v, long long c) {
     int cur_e = cur_edge[v];
     BiEdge* bi_edge = graph.graph[v][cur_e];
     int to = graph.graph[v][cur_e]->to;
-    edgeDecrease(bi_edge, c);
+    bi_edge->edgeDecrease(c);
     pathDecrease(to, c);
-}
-
-void BlockFlow::edgeDecrease(BiEdge* bi_edge, long long c) {
-    bi_edge->cap -= c;
-    bi_edge->flow += c;
-    bi_edge->co_bi_edge->cap -= -c;
-    bi_edge->co_bi_edge->flow += -c;
 }

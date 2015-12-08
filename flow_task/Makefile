@@ -1,8 +1,8 @@
 .PHONY: clean all
-all: max_flow clean
-max_flow: preflow.o preflow.h flowbfs.o flowbfs.h blockflow.o blockflow.h graph.o graph.h maxflowdinic.o maxflowdinic.h main.o
-	g++ -o max_flow $^
-%.o: %.c
+all: main clean
+main: graph.o maxflow.o preflow.o bfs.o blockflow.o maxflowdinic.o main.o 
+	g++ -o main $^
+%.o: %.cpp
 	g++ -c $^ 
 clean:
 	rm *.o

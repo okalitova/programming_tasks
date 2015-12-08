@@ -2,12 +2,10 @@
 #define PREFLOW_H_INCLUDED
 
 #include "graph.h"
+#include "maxflow.h"
 #include <queue>
 
-class MaxFlowPushPreFlow {
-public:
-    FlowGraph graph;
-    long long max_flow_value;
+class MaxFlowPushPreFlow : public MaxFlow {
 private:
     std::vector < int > h;
     std::vector < long long > e;
@@ -18,7 +16,6 @@ public:
     MaxFlowPushPreFlow(FlowGraph _graph);
 private:
     void initializePreFlow();
-    void edgeDecrease(BiEdge* bi_edge, long long c);
     void relable(int v);
     void push(BiEdge* bi_edge);
     void gap(int gap_h);

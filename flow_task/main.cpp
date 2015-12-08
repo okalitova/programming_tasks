@@ -1,14 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <cstdio>
-#include <queue>
-#include <cmath>
 #include "graph.h"
-#include "flowbfs.h"
-#include "blockflow.h"
 #include "maxflowdinic.h"
 #include "preflow.h"
 
@@ -23,7 +13,7 @@ int main() {
         MaxFlowDinicScaling max_flow(g);
         std::cout << "max flow value: " << max_flow.max_flow_value << "\n";
         std::cout << "edges:\n";
-        max_flow.flow_graph.printRealGraph();
+        max_flow.graph.printRealGraph();
     } else {
         MaxFlowPushPreFlow max_flow(g);
         std::cout << "max flow value: " << max_flow.max_flow_value << "\n";
