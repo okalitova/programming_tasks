@@ -1,0 +1,24 @@
+time: 2 4330
+check correctness:
+sum = 36288000
+time: 3 3951
+check correctness:
+sum = 36288000
+time: 4 5135
+check correctness:
+sum = 36288000
+time: 5 5289
+check correctness:
+sum = 36288000
+time: 6 5356
+check correctness:
+sum = 36288000
+time: 7 5355
+check correctness:
+sum = 36288000
+time: 8 5345
+check correctness:
+sum = 36288000
+time: 9 5342
+check correctness:
+sum = 36288000
